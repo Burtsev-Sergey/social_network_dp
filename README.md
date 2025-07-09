@@ -51,14 +51,14 @@ bash
 git clone https://github.com/Burtsev-Sergey/social_network_dp.git  
 cd social_network_dp
 
-1. Создание виртуального окружения
+2. Создание виртуального окружения
 
 bash  
 python -m venv venv  
 source venv/bin/activate    для Linux/Mac  
 venv\Scripts\activate       для Windows  
 
-1. Установка зависимостей
+3. Установка зависимостей
 
 bash  
 pip install -r requirements.txt
