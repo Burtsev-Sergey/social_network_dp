@@ -1,0 +1,43 @@
+# API-запросы в Postman
+
+# создание публикации/поста.
+
+curl --location 'http://127.0.0.1:8000/api/posts/' \
+--header 'Authorization: Token fb8117f1b012fa95c8168b18cc17ba322*******' \
+--form 'text="Первый пост Ирины"' \
+--form 'image=@"/C:/Users/Сергей/Desktop/vsc_orm/social_network_dp/pictures/image6.jpg"'
+
+
+# создание комментария к публикации/посту.
+
+curl --location 'http://localhost:8000/api/posts/3/comments/' \
+--header 'Authorization: Token e1db08020ed56d63fc5c336fa06b259f2*******' \
+--form 'text="Лучше всех\!"'
+
+
+# создание лайка к публикации/посту.
+
+curl --location --request POST 'http://localhost:8000/api/posts/2/like/' \
+--header 'Authorization: Token e1db08020ed56d63fc5c336fa06b259f2*******'
+
+
+# получение деталей публикации/поста.
+
+curl --location 'http://localhost:8000/api/posts/1/' \
+--header 'Authorization: Token fb8117f1b012fa95c8168b18cc17ba322*******'
+
+
+# редактирование публикации/поста.
+
+curl --location --request PATCH 'http://localhost:8000/api/posts/3/edit/' \
+--header 'Authorization: Token fb8117f1b012fa95c8168b18cc17ba322*******' \
+--header 'Content-Type: application/json' \
+--data '{
+  "text": "Новый текст поста"
+}'
+
+
+# отмена лайка.
+
+curl --location --request DELETE 'http://localhost:8000/api/posts/1/like/' \
+--header 'Authorization: Token e1db08020ed56d63fc5c336fa06b259f2*******'
