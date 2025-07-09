@@ -2,12 +2,12 @@
 
 ## Описание проекта
 
-Приложение публикует посты, которые состоят из текста и фотографии.
-Дата и время публикации поста фиксируется.
-Публиковать пост может только авторизованный пользователь.
-Редактирует пост только автор. На момент редактирования автор должен быть авторизован.
-Авторизованные пользователи могут комментировать публикации и оставлять реакцию - лайк.
-Авторизованный пользователь может получить детали каждого опубликованного поста.
+Приложение публикует посты, которые состоят из текста и фотографии.  
+Дата и время публикации поста фиксируется.  
+Публиковать пост может только авторизованный пользователь.  
+Редактирует пост только автор. На момент редактирования автор должен быть авторизован.  
+Авторизованные пользователи могут комментировать публикации и оставлять реакцию - лайк.  
+Авторизованный пользователь может получить детали каждого опубликованного поста.  
 
 Создание и авторизация пользователей - создание токенов авторизации производится через административную панель Django.
 
@@ -17,29 +17,29 @@
   
 'json'
 
-{
-    "id": 2,
-    "text": "Второй пост",
-    "image": "http://localhost:8000/media/posts/image2.jpg",
-    "created_at": "2025-07-07T10:37:13.176049Z",
-    "comments": [
-        {
-            "author": 2,
-            "text": "Супер!",
-            "created_at": "2025-07-07T11:23:44.411931Z"
-        }
-    ],
-    "likes_count": 1
+{  
+    "id": 2,  
+    "text": "Второй пост",  
+    "image": "http://localhost:8000/media/posts/image2.jpg",  
+    "created_at": "2025-07-07T10:37:13.176049Z",  
+    "comments": [  
+        {  
+           "author": 2,  
+            "text": "Супер!",  
+            "created_at": "2025-07-07T11:23:44.411931Z"  
+        }  
+   ],  
+   "likes_count": 1  
 }
 
 ## Требования
 
-django 5.0.2
-djangorestframework 3.14.0
-pillow 10.2.0
-psycopg2-binary 2.9.9
-geopy 2.4.1
-python-decouple 3.8
+django 5.0.2  
+djangorestframework 3.14.0  
+pillow 10.2.0  
+psycopg2-binary 2.9.9  
+geopy 2.4.1  
+python-decouple 3.8  
 СУБД: PostgreSQL 17
 
 
@@ -47,19 +47,20 @@ python-decouple 3.8
 
 1. Клонирование репозитория
 
-bash
-git clone https://github.com/Burtsev-Sergey/social_network_dp.git
+bash  
+git clone https://github.com/Burtsev-Sergey/social_network_dp.git  
 cd social_network_dp
 
-2. Создание виртуального окружения
+1. Создание виртуального окружения
 
-bash
-python -m venv venv
-source venv/bin/activate    для Linux/Mac
-venv\Scripts\activate       для Windows
+bash  
+python -m venv venv  
+source venv/bin/activate    для Linux/Mac  
+venv\Scripts\activate       для Windows  
 
-3. Установка зависимостей
-bash
+1. Установка зависимостей
+
+bash  
 pip install -r requirements.txt
   
 
@@ -67,34 +68,33 @@ pip install -r requirements.txt
 
 Создайте файл '.env' в корневой директории проекта и добавьте:
 
-DB_PASSWORD=ваш пароль в PostgreSQL
-DB_USER=ваше имя в PostgreSQL
-DB_NAME=имя базы данных - в проекте 'db_dj_diplom'
-DB_HOST=хост - в проекте 'localhost'
-DB_PORT=адрес порта - в проекте '5432'
-DJANGO_KEY=ваш ключ в Django
-
+DB_PASSWORD=ваш пароль в PostgreSQL  
+DB_USER=ваше имя в PostgreSQL  
+DB_NAME=имя базы данных - в проекте 'db_dj_diplom'  
+DB_HOST=хост - в проекте 'localhost'  
+DB_PORT=адрес порта - в проекте '5432'  
+DJANGO_KEY=ваш ключ в Django  
 Пример конфигурации в файле 'example_config'
 
 
 ### Работа с базой данных
 
-1. Создайте базу данных
-bash
+1. Создайте базу данных  
+bash  
 createdb db_dj_diplom
 
-2. Примените миграции
-bash
+1. Примените миграции  
+bash  
 python manage.py migrate
 
-3. Создайте суперпользователя
-bash
+1. Создайте суперпользователя  
+bash  
 python manage.py createsuperuser
 
 
 ### Запуск приложения
 
-bash
+bash  
 python manage.py runserver
 
 
