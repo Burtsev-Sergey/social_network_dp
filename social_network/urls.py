@@ -20,7 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-# Основная часть - admin доступ к админке Django; api перевод поиска маршрута в posts/urls.py
+# Основная часть - admin доступ к админке Django;
+# api перевод поиска маршрута в posts/urls.py
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('posts.urls')),
@@ -29,4 +30,7 @@ urlpatterns = [
 
 # Запуск в режиме разработчика.
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT,
+        )

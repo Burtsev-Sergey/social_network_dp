@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Post, Comment, Like
+from .models import Post, Like
 from .serializers import PostSerializer, CommentSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.authentication import TokenAuthentication
@@ -15,7 +14,8 @@ class PostCreateView(generics.CreateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    # Добавление автора — текущий пользователь автоматически подставляется как создатель поста.
+    # Добавление автора/
+    # Текущий пользователь автоматически подставляется как создатель поста.
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
@@ -38,7 +38,10 @@ class PostUpdateView(generics.UpdateAPIView):
     def get_object(self):
         post = super().get_object()
         if post.author != self.request.user:
-            self.permission_denied(self.request, message="Редактировать может только автор.")
+            self.permission_denied(
+                self.request,
+                message="Редактировать может только автор."
+                )
         return post
 
 
@@ -62,7 +65,10 @@ class LikeCreateView(APIView):
     # При POST-запросе — создать или активировать существующий лайк.
     def post(self, request, post_id):
         post = get_object_or_404(Post, id=post_id)
-        like, created = Like.objects.get_or_create(user=request.user, post=post)
+        like, created = Like.objects.get_or_create(
+            user=request.user,
+            post=post
+            )
         like.is_active = True
         like.save()
         return Response({'status': 'liked'}, status=status.HTTP_200_OK)
